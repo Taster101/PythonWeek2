@@ -40,7 +40,33 @@ def main():
 #print tips for the day
     print('total in tips:  \t',totalTips)
 
-#print total pay
+#print total paystatus
     print('total pay:  \t' ,totalPay)
+
+main()
+
+
+
+#Diccussion post 
+
+def main():
+#prompt for how many pizza's you want
+    numPizza = eval(input("how many pizza do you want to order?"))
+
+#prompt how many tacos you want
+    numTaco = eval(input("how many taco's do you want to order?"))
+
+#intialize taco price
+    tacoPrice = 3.50
+
+#intailize pizza price
+    pizzaPrice = 5.00
+
+
+#caculate toatal price for products
+    totalPrice = (numPizza * pizzaPrice) + (numTaco * tacoPrice)
+
+#print total price
+    print('your tatal price is ' ,totalPrice)
 
 main()

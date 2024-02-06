@@ -3,24 +3,37 @@
 # want and how many room they want serviced to give a final estimate
 
 
-def main():
+#def Welcome():
+    
 
-  #prompt user for cleaning service type
+
+
+
+
+def prompt_cus():
+    #prompt user for cleaning service type
     cService = eval(input('What type of cleaning service do you want? \n  1-Floor Cleaning \n  2-Bathroom \n'))
+
+    #validate cService input
+    if(cService <= 0 or cService > 2):
+        print("Please choose a service number that's avalible?")
+        cService = eval(input('What type of cleaning service do you want? \n  1-Floor Cleaning \n  2-Bathroom \n'))
+
 
  
    #prompt for number of rooms needing sercice
     numRooms = eval(input('how many rooms are you needing service here? \t'))
+
+    #validate number of rooms input
+    if(numRooms <= 0):
+        print('Please enter a valid room number count')
+        numRooms = eval(input('how many rooms are you needing serviced here? \t'))
     
     #prompt for speed service or 2 day wait
     urgency = input('Would you like to order a speedy service or two day wait? \n  "+" for speed service \n "-" for two day wait')
 
-   
-   #validate cService input
-    if(cService <= 0 or cService > 2):
-        print("Please choose a service number that's avalible?")
-        cService = eval(input('What type of cleaning service do you want? \n  1-floor cleaning \n  2-bathroom'))
-        
+    return(cService,numRooms,urgency)
+def caculate_customerCost(cService,numRooms,urgency):
     #set price for service based on number of rooms with floor service 
     if(cService == 1):
 
@@ -46,11 +59,6 @@ def main():
         else:
             serviceCost = 105                            #room higher than 4 service cost 105$ 
 
-    #validate number of rooms input
-    if(numRooms <= 0):
-        print('Please enter a valid room number count')
-        numRooms = eval(input('how many rooms are you needing serviced here? \t'))
-  
     #calculate total price based off urgency or normal wait
     if(urgency == '-'):
     
@@ -58,12 +66,37 @@ def main():
 
     elif(urgency == '+'):
         totalCost = numRooms * serviceCost + 50
-   
+
+
+    return(totalCost)
+
+def print_total(totalCost):
     #print service total cost
     print('Your total cost: ',totalCost)
+    
+    
+    
 
 
 
 
-#run program
+
+
+
+
+
+
+
+
+
+
+
+
+def main():
+    #welcome()
+    cService,numRooms,urgency = prompt_cus()
+    totalCost = caculate_customerCost(cService,numRooms,urgency)
+    print_total(totalCost)
+    
 main()
+    
